@@ -13,30 +13,30 @@ ENV PHPIZE_DEPS \
     git \
     pkgconf \
     re2c \
-    libzip \
     libpng-dev \
     libjpeg-turbo-dev \
     libwebp-dev  \
     libxpm-dev \
     freetype-dev \
-    zlib-dev \
-    libzip-dev
+    zip \
+    libzip 
 
 RUN apk add --no-cache --virtual .persistent-deps \
     libpng \
     freetype \
     libjpeg-turbo \
     libsodium-dev \
-    mysql-client
+    mysql-client \
+    libzip-dev
 
 RUN set -xe \
     && apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
     && docker-php-ext-configure mbstring --enable-mbstring \
-    && docker-php-ext-configure zip --with-libzip \
     && docker-php-ext-configure gd --with-gd \
         --with-freetype-dir=/usr/include/ \
         --with-png-dir=/usr/include/ \
         --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-configure zip \
     && NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) \
     && docker-php-ext-install -j${NPROC} \
         gd \
