@@ -19,7 +19,8 @@ ENV PHPIZE_DEPS \
     libxpm-dev \
     freetype-dev \
     zip \
-    libzip 
+    libzip \
+    oniguruma-dev
 
 RUN apk add --no-cache --virtual .persistent-deps \
     libpng \
@@ -32,10 +33,9 @@ RUN apk add --no-cache --virtual .persistent-deps \
 RUN set -xe \
     && apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
     && docker-php-ext-configure mbstring --enable-mbstring \
-    && docker-php-ext-configure gd --with-gd \
-        --with-freetype-dir=/usr/include/ \
-        --with-png-dir=/usr/include/ \
-        --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-configure gd \
+        --with-freetype=/usr/include/ \
+        --with-jpeg=/usr/include/ \
     && docker-php-ext-configure zip \
     && NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) \
     && docker-php-ext-install -j${NPROC} \
