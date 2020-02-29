@@ -1,4 +1,4 @@
-FROM php:7.3.13-fpm-alpine3.10
+FROM php:7.4.3-fpm-alpine3.11
 
 # persistent / runtime deps
 ENV PHPIZE_DEPS \
@@ -50,6 +50,6 @@ RUN set -xe \
     && rm -rf /var/www \
     && mkdir -p /var/www
 
-COPY --from=composer:1.9.1 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www
