@@ -50,6 +50,6 @@ RUN set -xe \
     && rm -rf /var/www \
     && mkdir -p /var/www
 
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer:1.9.3 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www
