@@ -34,6 +34,7 @@ RUN set -xe \
     && apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
     && docker-php-ext-configure mbstring --enable-mbstring \
     && docker-php-ext-configure gd \
+    	--enable-gd \
         --with-freetype=/usr/include/ \
         --with-jpeg=/usr/include/ \
     && docker-php-ext-configure zip \
