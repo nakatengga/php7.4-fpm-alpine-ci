@@ -20,7 +20,8 @@ ENV PHPIZE_DEPS \
     freetype-dev \
     zip \
     libzip \
-    oniguruma-dev
+    oniguruma-dev \
+    MAGICK_HOME=/usr
 
 RUN apk add --no-cache --virtual .persistent-deps \
     libpng \
@@ -29,7 +30,8 @@ RUN apk add --no-cache --virtual .persistent-deps \
     libsodium-dev \
     mysql-client \
     libzip-dev \
-    imagemagick
+    imagemagick \
+    imagemagick-dev
 
 RUN set -xe \
     && apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
