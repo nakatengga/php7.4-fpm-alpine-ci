@@ -28,7 +28,8 @@ RUN apk add --no-cache --virtual .persistent-deps \
     libjpeg-turbo \
     libsodium-dev \
     mysql-client \
-    libzip-dev
+    libzip-dev \
+    libmagickwand-dev
 
 RUN set -xe \
     && apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
