@@ -47,7 +47,7 @@ RUN set -xe \
         pcntl \
         exif \
     && pecl install imagick \
-	&& docker-php-ext-enable imagick
+	&& docker-php-ext-enable imagick \
     && apk del .build-deps \
     && rm -rf /tmp/* \
     && rm -rf /var/www \
