@@ -29,7 +29,7 @@ RUN apk add --no-cache --virtual .persistent-deps \
     libsodium-dev \
     mysql-client \
     libzip-dev \
-    libmagickwand-dev
+    imagemagick
 
 RUN set -xe \
     && apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
