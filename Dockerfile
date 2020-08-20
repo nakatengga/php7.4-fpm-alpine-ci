@@ -50,6 +50,7 @@ RUN set -xe \
         zip \
         pcntl \
         exif \
+        sockets \
     && pecl install imagick \
 	&& docker-php-ext-enable imagick \
     && apk del .build-deps \
