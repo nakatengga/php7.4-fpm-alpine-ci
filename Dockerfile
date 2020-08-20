@@ -20,8 +20,9 @@ ENV PHPIZE_DEPS \
     freetype-dev \
     zip \
     libzip \
-    oniguruma-dev \
-    MAGICK_HOME=/usr
+    oniguruma-dev
+
+ENV MAGICK_HOME=/usr
 
 RUN apk add --no-cache --virtual .persistent-deps \
     libpng \
